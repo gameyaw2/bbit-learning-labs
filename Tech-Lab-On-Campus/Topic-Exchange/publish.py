@@ -47,5 +47,4 @@ if __name__ == "__main__":
     ticker = sys.argv[1]
     price = sys.argv[2]
     sector = sys.argv[3]
-
     sys.exit(main(ticker,price,sector))
