@@ -15,8 +15,12 @@ class mqConsumer(mqConsumerInterface):
         self.setupRMQConnection()
 
     def setupRMQConnection(self) -> None:
-        exchange = self.channel.exchange_declare(exchange=self.exchange_name)
+
+        self.channel.exchange_declare(
+            exchange=self.exchange_name, exchange_type="topic"
+        )
         self.channel.queue_declare(queue=self.queue_name)
+
         self.channel.queue_bind(
             queue= self.queue_name,
             routing_key= self.binding_key,

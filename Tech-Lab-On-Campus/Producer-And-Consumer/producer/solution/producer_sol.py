@@ -17,9 +17,9 @@ class mqProducer(mqProducerInterface):
         self.channel = self.connection.channel()
 
     def publishOrder(self, message:str):
-        exchange = self.channel.exchange_declare(exchange="Exchange Name")
+        exchange = self.channel.exchange_declare(exchange=self.exchange_name)
         self.channel.basic_publish(
-            exchange="Exchange Name", routing_key="Routing Key", body="Message",
+            exchange=self.exchange_name, routing_key=self.routing_key, body=message,
             )
         self.channel.close()
         self.connection.close()
