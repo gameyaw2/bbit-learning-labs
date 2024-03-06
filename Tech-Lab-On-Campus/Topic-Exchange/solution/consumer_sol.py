@@ -19,6 +19,7 @@ class mqConsumer(mqConsumerInterface):
         self.channel.exchange_declare(
             exchange=self.exchange_name, exchange_type="topic"
         )
+        
         self.channel.queue_declare(queue=self.queue_name)
 
         self.channel.queue_bind(
